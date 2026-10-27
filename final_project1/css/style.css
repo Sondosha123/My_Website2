@@ -1,0 +1,360 @@
+/* css/style.css - نظام "طلابي" (الوضع الليلي والنهاري + خط ثمانية) */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+/* المتغيرات الافتراضية: الوضع الليلي (Dark Mode) */
+:root, [data-bs-theme="dark"] {
+    --bs-body-font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+    --bs-font-sans-serif: 'IBM Plex Sans Arabic', sans-serif !important;
+    --sidebar-bg: #16171b;
+    --main-bg: #111215;
+    --card-bg: #1b1d22;
+    --input-bg: #22252b;
+    --gold-primary: #c8a156;
+    --gold-hover: #b58d42;
+    --gold-dark-text: #16171b;
+    --text-main: #f1f3f5;
+    --text-muted: #8b929e;
+    --border-color: #282b33;
+    --topbar-bg: #16171b;
+}
+
+/* متغيرات الوضع النهاري (Light Mode) */
+[data-bs-theme="light"] {
+    --sidebar-bg: #ffffff;
+    --main-bg: #f4f6f9;
+    --card-bg: #ffffff;
+    --input-bg: #f8f9fa;
+    --gold-primary: #b88b32;
+    --gold-hover: #9e7322;
+    --gold-dark-text: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --topbar-bg: #ffffff;
+}
+
+*, *::before, *::after,
+body, p, span, small, a, .btn,
+h1, h2, h3, h4, h5, h6,
+input, button, select, textarea {
+    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+body {
+    background-color: var(--main-bg) !important;
+    color: var(--text-main) !important;
+    margin: 0;
+    overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ====== الشريط العلوي (Top Utility Bar) للغة والثيم ====== */
+.top-utility-bar {
+    background-color: var(--topbar-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+.utility-btn {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.utility-btn:hover {
+    border-color: var(--gold-primary);
+    color: var(--gold-primary);
+}
+
+.flag-img {
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+/* ====== تخطيط لوحة التحكم والشريط الجانبي ====== */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 270px;
+    background-color: var(--sidebar-bg);
+    border-inline-end: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 28px 20px 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    inset-inline-start: 0;
+    z-index: 1000;
+    transition: background-color 0.25s ease;
+}
+
+.brand-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 36px;
+    padding: 0 6px;
+}
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--gold-primary);
+    color: var(--gold-dark-text);
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.brand-text h4 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--text-main);
+}
+
+.brand-text span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.menu-section-title {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin: 10px 12px;
+    font-weight: 600;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-link {
+    display: flex !important;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: var(--text-main) !important;
+    text-decoration: none !important;
+    font-weight: 500;
+    font-size: 0.98rem;
+    transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(200, 161, 86, 0.14);
+    color: var(--gold-primary) !important;
+}
+
+.sidebar-link.active {
+    background-color: var(--gold-primary) !important;
+    color: var(--gold-dark-text) !important;
+    font-weight: 700;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+    padding-top: 18px;
+}
+
+.user-profile-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.user-info-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c8a156 0%, #f3e5ab 100%);
+    color: #16171b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.92rem;
+    flex-shrink: 0;
+}
+
+.user-details h6 {
+    margin: 0;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.user-details small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.logout-icon-btn {
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.logout-icon-btn:hover {
+    color: #ef4444;
+}
+
+/* ====== المحتوى الرئيسي ====== */
+.main-content {
+    margin-inline-start: 270px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 270px);
+}
+
+.page-body {
+    padding: 30px 40px;
+}
+
+.card-custom {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.btn-gold {
+    background-color: var(--gold-primary) !important;
+    color: var(--gold-dark-text) !important;
+    font-weight: 700 !important;
+    border: none !important;
+    transition: all 0.2s;
+}
+
+.btn-gold:hover {
+    background-color: var(--gold-hover) !important;
+}
+
+.form-control, .form-select, .input-group-text {
+    background-color: var(--input-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-main) !important;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--gold-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(200, 161, 86, 0.2) !important;
+}
+
+/* ====== صفحة تسجيل الدخول الترحيبية المتكاملة ====== */
+.auth-page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-split-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.auth-showcase-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+    max-width: 1020px;
+    width: 100%;
+}
+
+.welcome-info-panel {
+    background: linear-gradient(145deg, rgba(200, 161, 86, 0.14) 0%, rgba(22, 23, 27, 0.05) 100%);
+    border-inline-end: 1px solid var(--border-color);
+    padding: 42px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.service-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgba(200, 161, 86, 0.2);
+    color: var(--gold-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.student-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold-primary);
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        border-inline-end: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .app-wrapper {
+        flex-direction: column;
+    }
+    .main-content {
+        margin-inline-start: 0;
+        width: 100%;
+    }
+    .welcome-info-panel {
+        border-inline-end: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+}
